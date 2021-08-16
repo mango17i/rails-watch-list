@@ -1,15 +1,52 @@
 
-<div class="container py-5">
-  <div class="row">
-    <div class="col-12 col-md-6 offset-lg-3">
+<div class="bookmark_container">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag "https://api.freelogodesign.org/files/622cc9246ac64927b19a769e9d234a90/thumb/logo_200x200.png?v=0" %>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" id="burger-menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <%= link_to "Home", lists_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Messages", "#", class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "New List", new_list_path, class: "dropdown-item" %>
+            <%= link_to "Movie", href="#social", class: "dropdown-item" %>
+          </div>
+        </li>
+      </ul>
+  </div>
+</div>
+  <div class="row newlist">
+    <div class="card_item col-10 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
         <h3>Add a movie to your <%= @list.name %> list</h3>
         <%= simple_form_for [@list, @bookmark] do |f| %>
           <%= f.input :comment, placeholder: 'Enter a comment about the movie' %>
           <%= f.association :movie, prompt: 'Select a movie', input_html: { class: 'select2' } %>
-          <%= f.submit class: 'btn btn-flat' %>
+          <%= f.submit class: 'btn btn-gradient' %>
         <% end %>
       </div>
     </div>
   </div>
+  <footer>
+      <ul class="social" id="social">
+        <li class="fb"><a href="https://fr-fr.facebook.com/"><%= icon('fab', 'facebook') %></a></li>
+        <li class="insta"><a href="https://twitter.com/?lang=fr"><%= icon('fab', 'instagram') %></a></li>
+        <li class="twitter"><a href="https://www.instagram.com/?hl=fr"><%= icon('fab', 'twitter') %></a></li>
+        <li class="snap"><a href="https://www.snapchat.com/l/fr-fr/download"><%= icon('fab', 'snapchat') %></a></li>
+      </ul>
+    <p class="copyright"><%= icon('fas', 'copyright') %> Copyright by mango17i</p>
+  </footer>
 </div>
